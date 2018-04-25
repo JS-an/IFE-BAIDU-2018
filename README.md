@@ -1,5 +1,5 @@
-# IFE-BAIDU-2018
+IFE-BAIDU-2018
 报完名电脑就Boom了，下午紧赶慢赶终于组装了一部老旧电脑，求不Boom，只要保佑陪我度过这个课程就好了！
-<br/>
+<br>
 CSS3 Menu animation effect
 https://js-an.github.io/IFE-BAIDU-2018/CSS3MenuAnimationEffect.html
