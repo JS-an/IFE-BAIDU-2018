@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    text-align: center;
+}
+#ctx{
+    width: 200px;
+    height: 200px;
+}
+span{
+    font-size: 50px;
+}
+#ctx3{
+    margin-top: 100px;
+    height: 6px;
+    transition: width 1s;
+}
+input{
+    margin-top: 60px;
+    width: 200px;
+    height: 80px;
+    background-color:#fff; 
+    font-size: 30px;
+    border:2px #666 solid;
+    outline: none;
+    border-radius: 20px;
+}
+.etu-center,#ctx3{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+input:active{
+    background-color:#eee;
+}
+.etu-effect{
+    transition: color 1s;
+    color: blue;
+}
+.etu-ceffect{
+    transition: color 1s;
+    color: black;
+}
+.etu-p-effect{
+    width: 200px;
+    border-top: 3px solid blue;
+    border-bottom: 3px solid blue;
+}
+.etu-p-ceffect{
+    width: 0px;
+    border-top: 3px solid blue;
+    border-bottom: 3px solid blue;
+}
+.swidth{
+    width: 0px;
+}
