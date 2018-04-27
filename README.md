@@ -9,3 +9,6 @@ https://js-an.github.io/IFE-BAIDU-2018/CSSTransform2D/CSSTransform2D.html
 <hr>
 SmileCat
 https://js-an.github.io/IFE-BAIDU-2018/cat/cat.html
+<hr>
+3Drotate
+https://js-an.github.io/IFE-BAIDU-2018/3Drotate/3Drotate.html
