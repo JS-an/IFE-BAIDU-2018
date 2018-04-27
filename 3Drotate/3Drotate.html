@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>3Drotate</title>
+    <meta charset="utf-8">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        img {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            transition: transform 2s;
+        }
+        
+        .img1 {
+            backface-visibility: hidden;
+        }
+        
+        body:hover .img2 {
+            transform: rotateY(180deg);
+        }
+        
+        body:hover .img1 {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <img class="img2" src="./反面.jpg" alt="">
+    <img class="img1" src="./正面.jpg" alt="">
+</body>
+
+</html>
