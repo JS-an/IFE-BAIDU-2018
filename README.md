@@ -8,4 +8,4 @@ CSSTransform2D
 https://js-an.github.io/IFE-BAIDU-2018/CSSTransform2D/CSSTransform2D.html
 <hr>
 SmileCat
-https://js-an.github.io/IFE-BAIDU-2018/SmileCat/smileCat.html
+https://js-an.github.io/IFE-BAIDU-2018/SmileCat/SmileCat.html
