@@ -12,3 +12,6 @@ https://js-an.github.io/IFE-BAIDU-2018/cat/cat.html
 <hr>
 3Drotate
 https://js-an.github.io/IFE-BAIDU-2018/3Drotate/3Drotate.html
+<hr>
+cube
+https://js-an.github.io/IFE-BAIDU-2018/cube/cube.html
