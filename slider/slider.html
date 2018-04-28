@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Slider</title>
+    <meta charset="utf-8">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        /*居中填满*/
+        
+        .zhong {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            background-size: 100% 100%;
+        }
+        
+        .img1 {
+            background-image: url(./img/1.jpg);
+        }
+        
+        .img2 {
+            background-image: url(./img/2.jpg);
+        }
+        
+        .img3 {
+            background-image: url(./img/3.jpg);
+        }
+        
+        .img4 {
+            background-image: url(./img/4.jpg);
+        }
+        
+        .img5 {
+            background-image: url(./img/5.jpg);
+        }
+        
+        .bottom {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+        }
+        
+        label {
+            z-index: 10;
+            align-self: flex-end;
+            margin:20px 5px;
+        }
+        /*变暗层*/
+        
+        .dark {
+            background-color: #000;
+            width: 192px;
+            height: 108px;
+        }
+        
+        img {
+            width: 192px;
+            height: 108px;
+            opacity: 0.5;
+        }
+        /*鼠标指向变亮*/
+        
+        img:hover {
+            opacity: 1;
+        }
+        /*点击事件*/
+        
+        #input1:checked~.img1 {
+            z-index: 5;
+            animation: anima1 .5s ease-out;
+        }
+        
+        #input2:checked~.img2 {
+            z-index: 5;
+            animation: anima2 .5s ease-out;
+        }
+        
+        #input3:checked~.img3 {
+            z-index: 5;
+            animation: anima3 1S ease-in;
+        }
+        
+        #input4:checked~.img4 {
+            z-index: 5;
+            animation: anima4 1s ease-out;
+        }
+        
+        #input5:checked~.img5 {
+            z-index: 5;
+            animation: anima5 .7s ease-in-out;
+        }
+        /*动画*/
+        
+        @keyframes anima1 {
+            from {
+                transform: translateX(-500px);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes anima2 {
+            from {
+                transform: translateY(350px);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes anima3 {
+            from {
+                transform: scale(0.1);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes anima4 {
+            from {
+                transform: scale(2);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes anima5 {
+            from {
+                transform: rotate(-360deg) scale(0.1);
+            }
+            to {
+                transform: translateX(0deg) scale(1);
+            }
+        }
+        /*隐藏滚动条*/
+        
+         ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bottom">
+        <input id="input1" type="radio" name="radiox" hidden checked="none"/>
+        <label for="input1" class="dark c1"><img src="./img/1.jpg" alt=""></label>
+        <input id="input2" type="radio" name="radiox" hidden checked="none"/>
+        <label for="input2" class="dark c2"><img src="./img/2.jpg" alt=""></label>
+        <input id="input3" type="radio" name="radiox" hidden checked="none"/>
+        <label for="input3" class="dark c3"><img src="./img/3.jpg" alt=""></label>
+        <input id="input4" type="radio" name="radiox" hidden checked="none"/>
+        <label for="input4" class="dark c4"><img src="./img/4.jpg" alt=""></label>
+        <input id="input5" type="radio" name="radiox" hidden checked="none"/>
+        <label for="input5" class="dark c5"><img src="./img/5.jpg" alt=""></label>
+        <div class="zhong img1"></div>
+        <div class="zhong img2"></div>
+        <div class="zhong img3"></div>
+        <div class="zhong img4"></div>
+        <div class="zhong img5"></div>
+    </div>
+</body>
+
+</html>
