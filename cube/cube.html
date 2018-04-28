@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            perspective: 600px;
+            -webkit-perspective: 600px;
+            perspective-origin: 70% 30%;
+            -webkit-perspective-origin: 70% 30%;
+        }
+        
+        .cube {
+            font-size: 50px;
+            line-height: 200px;
+            text-align: center;
+            width: 200px;
+            height: 200px;
+            /*backface-visibility: hidden;*/
+            transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            transition: transform 9s linear;
+        }
+        
+        .zhong {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+        }
+        
+        .cube1 {
+            background-color:rgb(50, 150, 255, 0.5);
+            transform: rotateY(0deg) translateZ(100px);
+        }
+        
+        .cube2 {
+            background-color: rgb(150, 50, 255, 0.5);
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        
+        .cube3 {
+            background-color: rgb(150, 255, 50, 0.5);
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        
+        .cube4 {
+            background-color: rgb(255, 150, 50, 0.5);
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        
+        .cube5 {
+            background-color: rgb(255, 50, 150, 0.5);
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        
+        .cube6 {
+            background-color: rgb(50, 255, 150, 0.5);
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        
+        .cube:hover {
+            transform: rotateY(360deg);
+        }
+    </style>
+</head>
+
+<body class="zhong">
+    <div class="cube zhong">
+        <div class="cube6 zhong">6</div>
+        <div class="cube5 zhong">5</div>
+        <div class="cube4 zhong">4</div>
+        <div class="cube3 zhong">3</div>
+        <div class="cube2 zhong">2</div>
+        <div class="cube1 zhong">1</div>
+    </div>
+    <script></script>
+</body>
+
+</html>
