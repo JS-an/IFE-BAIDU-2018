@@ -17,4 +17,4 @@ cube
 https://js-an.github.io/IFE-BAIDU-2018/cube/cube.html
 <hr>
 slider
-https://js-an.github.io/IFE-BAIDU-2018/slider/slider.html
+https://js-an.github.io/IFE-BAIDU-2018/slideranima/slider.html
