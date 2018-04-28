@@ -15,3 +15,6 @@ https://js-an.github.io/IFE-BAIDU-2018/3Drotate/3Drotate.html
 <hr>
 cube
 https://js-an.github.io/IFE-BAIDU-2018/cube/cube.html
+<hr>
+slider
+https://js-an.github.io/IFE-BAIDU-2018/slider/slider.html
