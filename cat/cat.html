@@ -106,6 +106,7 @@
             position: absolute;
             left: 50%;
             margin-left: -23px;
+            transition: transform 1s;
         }
         
         .eye-bottom {
@@ -116,6 +117,7 @@
             margin-top: 48px;
             border-top: 2px solid #46240b;
             background: #f6f7f2;
+            transition: transform 1s;
         }
         
         .eye-wrap .right {
@@ -134,6 +136,7 @@
             border-radius: 50% 50% 50% 50%;
             background: #e85a5e;
             opacity: 0.0;
+            transition: opacity 1s;
         }
         /* 鼻子 */
         
@@ -181,53 +184,54 @@
         }
         /*鼠标hover样式 写在这里*/
         
+        .left {
+            transition: transform 1s, border-radius 1s;
+        }
+        
+        .right {
+            transition: transform 1s, border-radius 1s;
+        }
+        
         .container:hover .ear-wrap .left {
             transform: rotate(-20deg);
             -webkit-transition: transform 1s;
             -moz-transition: transform 1s;
-            transition: transform 1s;
         }
         
         .container:hover .ear-wrap .right {
             transform: rotate(20deg);
             -webkit-transition: transform 1s;
             -moz-transition: transform 1s;
-            transition: transform 1s;
         }
         
         .container:hover .eye-wrap .eye-core {
             transform: scale(0.8, 1);
             -webkit-transition: transform 1s;
             -moz-transition: transform 1s;
-            transition: transform 1s;
         }
         
         .container:hover .eye-wrap .eye-bottom {
             transform: translate(0, -15px);
             -webkit-transition: transform 1s;
             -moz-transition: transform 1s;
-            transition: transform 1s;
         }
         
         .container:hover .eye-wrap .face-red {
             opacity: 0.8;
             -webkit-transition: opacity 1s;
             -moz-transition: opacity 1s;
-            transition: opacity 1s;
         }
         
         .container:hover .mouth-wrap .left {
             border-radius: 0% 40% 50% 50%;
             -webkit-transition: border-radius 1s;
             -moz-transition: border-radius 1s;
-            transition: border-radius 1s;
         }
         
         .container:hover .mouth-wrap .right {
             border-radius: 40% 0% 50% 50%;
             -webkit-transition: border-radius 1s;
             -moz-transition: border-radius 1s;
-            transition: border-radius 1s;
         }
     </style>
 </head>
