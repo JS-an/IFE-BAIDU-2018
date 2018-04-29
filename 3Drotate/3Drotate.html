@@ -11,11 +11,16 @@
             padding: 0;
         }
         
-        img {
+        body {
+            perspective: 500px;
+            -webkit-perspective: 500px;
+        }
+        
+        .zhong {
             position: absolute;
+            top: 0;
             left: 0;
             right: 0;
-            top: 0;
             bottom: 0;
             margin: auto;
             transition: transform 2s;
@@ -24,23 +29,26 @@
         .img1 {
             backface-visibility: hidden;
         }
-        .img2{
+        
+        .img2 {
             transform: rotateY(180deg);
         }
         
-        body:hover .img2 {
+        div:hover .img1 {
+            transform: rotateY(180deg);
+        }
+        
+        div:hover .img2 {
             transform: rotateY(360deg);
-        }
-        
-        body:hover .img1 {
-            transform: rotateY(180deg);
         }
     </style>
 </head>
 
-<body>
-    <img class="img2" src="./反面.jpg" alt="">
-    <img class="img1" src="./正面.jpg" alt="">
+<body class="zhong">
+    <div>
+        <img class="zhong img2" src="./反面.jpg" alt="">
+        <img class="zhong img1" src="./正面.jpg" alt="">
+    </div>
 </body>
 
 </html>
