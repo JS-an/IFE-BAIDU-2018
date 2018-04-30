@@ -24,5 +24,5 @@ https://js-an.github.io/IFE-BAIDU-2018/sliderAnima/slider.html
 <hr>
 零基础学院
 <hr>
-remuse
-https://js-an.github.io/IFE-BAIDU-2018/remuse/remuse.html
+resume
+https://js-an.github.io/IFE-BAIDU-2018/resume/resume.html
