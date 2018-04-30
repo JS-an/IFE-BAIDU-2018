@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <title>resume</title>
+    <title>resume（按数字1,2,3可切换样式）</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./resume3.css">
+    <link id="lk" rel="stylesheet" href="./resume3.css">
 </head>
 
-<body>
+<body title="按数字1,2,3可切换样式">
     <header>简历</header>
     <article>
         <section class="dowm1">
@@ -63,5 +63,21 @@
         </section>
     </article>
 </body>
+<script>
+    var lk = document.getElementById('lk')
+    document.onkeyup = function (e) {
+        var keynum = window.event ? e.keyCode : e.which
+        if (keynum == 49 || keynum == 97) {
+            lk.href = './resume1.css'
+        }
+        else if (keynum == 50 || keynum == 98) {
+            lk.href = './resume2.css'
+        }
+        else if (keynum == 51 || keynum == 99) {
+            lk.href = './resume3.css'
+        }
+    }
+
+</script>
 
 </html>
