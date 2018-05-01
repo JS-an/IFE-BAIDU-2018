@@ -26,3 +26,6 @@ https://js-an.github.io/IFE-BAIDU-2018/sliderAnima/slider.html
 <hr>
 resume
 https://js-an.github.io/IFE-BAIDU-2018/resume/resume.html
+<hr>
+layout
+https://js-an.github.io/IFE-BAIDU-2018/layout/design.html
