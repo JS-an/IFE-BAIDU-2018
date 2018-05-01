@@ -1,0 +1,178 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+    background-color: #000;
+}
+
+.header-main {
+    width: 960px;
+    height: 50px;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    float: left;
+    overflow: hidden;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+}
+
+.header-nav {
+    float: right;
+}
+
+.header-nav li {
+    display: inline;
+    margin-left: 10px;
+}
+
+.header-nav a {
+    color: #fff;
+}
+
+.banner {
+    background-color: #0f0;
+    width: 100%;
+    height: 300px;
+    background-image: url(../sliderAnima/img/5.jpg);
+    background-size: cover;
+}
+
+.banner-main {
+    position: relative;
+    width: 960px;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.banner-nav {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+}
+
+.banner-nav li {
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+    width: 30px;
+    height: 40px;
+    background-color: #eee;
+    border: 1px solid #333;
+    margin-left: 5px;
+    transition: all .2s;
+}
+
+.navigation {
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid #ddd;
+}
+
+.navigation-main {
+    width: 960px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.navigation-nav {
+    float: left;
+}
+
+.navigation-nav li {
+    text-align: center;
+    line-height: 50px;
+    display: inline-block;
+    border: 1px solid #ddd;
+    border-radius: 15px 15px 0 0;
+    width: 80px;
+    height: 50px;
+    margin-top: 10px;
+}
+
+.navigation-nav label {
+    display: block;
+    width: 80px;
+    height: 50px;
+}
+
+.main-1 {
+    display: flex;
+    width: 960px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.main-2 {
+    border: 1px solid #ddd;
+    padding: 80px;
+    margin: 5px 5px 0 0;
+}
+
+.footer {
+    background-color: #222;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/*banner事件*/
+
+.l1:hover {
+    height: 60px;
+    line-height: 80px;
+}
+
+.l2:hover {
+    height: 60px;
+    line-height: 80px;
+}
+
+.l3:hover {
+    height: 60px;
+    line-height: 80px;
+}
+
+.l4:hover {
+    height: 60px;
+    line-height: 80px;
+}
+
+/*导航事件*/
+
+#input1:checked~.l5 {
+    height: 50px;
+    background-color: #fff;
+    border-bottom: hidden;
+}
+
+#input2:checked~.l6 {
+    height: 50px;
+    background-color: #fff;
+    border-bottom: hidden;
+}
+
+#input3:checked~.l7 {
+    height: 50px;
+    background-color: #fff;
+    border-bottom: hidden;
+}

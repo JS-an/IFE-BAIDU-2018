@@ -1,0 +1,304 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+input {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin-left: 20px;
+}
+
+/*浮动实现*/
+
+#in1:checked~.box .left {
+    background-color: deeppink;
+    float: left;
+    width: 30%;
+}
+
+#in1:checked~.box .main {
+    display: none;
+}
+
+#in1:checked~.box .right {
+    background-color: deepskyblue;
+    float: left;
+    width: 70%;
+}
+
+#in4:checked~.box .left {
+    background-color: deeppink;
+    float: left;
+    width: 200px;
+}
+
+#in4:checked~.box .main {
+    display: none;
+}
+
+#in4:checked~.box .right {
+    background-color: deepskyblue;
+    margin-left: 200px;
+}
+
+#in7:checked~.box .left {
+    background-color: deeppink;
+    float: right;
+    width: 200px;
+}
+
+#in7:checked~.box .main {
+    display: none;
+}
+
+#in7:checked~.box .right {
+    background-color: deepskyblue;
+}
+
+#in10:checked~.box .left {
+    background-color: deeppink;
+    float: left;
+    width: 200px;
+}
+
+#in10:checked~.box .main {
+    background-color: green;
+    float: right;
+    width: 200px;
+}
+
+#in10:checked~.box .right {
+    background-color: deepskyblue;
+}
+
+#in13:checked~.box .left {
+    background-color: deeppink;
+    float: left;
+    width: 200px;
+}
+
+#in13:checked~.box .main {
+    background-color: green;
+    float: left;
+    width: 200px;
+}
+
+#in13:checked~.box .right {
+    background-color: deepskyblue;
+}
+
+/*position实现*/
+
+#in2:checked~.box {
+    position: relative;
+}
+
+#in2:checked~.box .main {
+    display: none;
+}
+
+#in2:checked~.box .left {
+    background-color: deeppink;
+    position: absolute;
+    width: 30%;
+}
+
+#in2:checked~.box .right {
+    background-color: deepskyblue;
+    position: absolute;
+    left: 30%;
+    width: 70%;
+}
+
+#in5:checked~.box {
+    position: relative;
+}
+
+#in5:checked~.box .main {
+    display: none;
+}
+
+#in5:checked~.box .left {
+    background-color: deeppink;
+    position: absolute;
+    width: 200px;
+}
+
+#in5:checked~.box .right {
+    background-color: deepskyblue;
+    position: absolute;
+    margin-left: 200px;
+    width: calc(100% - 200px);
+}
+
+#in8:checked~.box {
+    position: relative;
+}
+
+#in8:checked~.box .main {
+    display: none;
+}
+
+#in8:checked~.box .left {
+    background-color: deeppink;
+    position: absolute;
+    width: calc(100% - 200px);
+}
+
+#in8:checked~.box .right {
+    background-color: deepskyblue;
+    position: absolute;
+    right: 0;
+    width: 200px;
+}
+
+#in11:checked~.box {
+    position: relative;
+}
+
+#in11:checked~.box .main {
+    background-color: green;
+    position: absolute;
+    margin: 0 200px;
+    width: calc(100% - 400px)
+}
+
+#in11:checked~.box .left {
+    background-color: deeppink;
+    position: absolute;
+    width: 200px;
+}
+
+#in11:checked~.box .right {
+    background-color: deepskyblue;
+    position: absolute;
+    right: 0;
+    width: 200px;
+}
+
+#in14:checked~.box {
+    position: relative;
+}
+
+#in14:checked~.box .main {
+    background-color: green;
+    position: absolute;
+    margin-left: 200px;
+    width: 200px;
+}
+
+#in14:checked~.box .left {
+    background-color: deeppink;
+    position: absolute;
+    width: 200px;
+}
+
+#in14:checked~.box .right {
+    background-color: deepskyblue;
+    position: absolute;
+    margin-left: 400px;
+    width: calc(100% - 400px)
+}
+
+/*Flex实现*/
+
+#in3:checked~.box {
+    display: flex;
+}
+
+#in3:checked~.box .left {
+    background-color: deeppink;
+    flex-grow: 0.3
+}
+
+#in3:checked~.box .main {
+    display: none;
+}
+
+#in3:checked~.box .right {
+    background-color: deepskyblue;
+    flex-grow: 0.7
+}
+
+#in6:checked~.box {
+    display: flex;
+}
+
+#in6:checked~.box .left {
+    background-color: deeppink;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+#in6:checked~.box .main {
+    display: none;
+}
+
+#in6:checked~.box .right {
+    background-color: deepskyblue;
+    flex-grow: 1;
+}
+
+#in9:checked~.box {
+    display: flex;
+}
+
+#in9:checked~.box .left {
+    background-color: deeppink;
+    flex-grow: 1;
+}
+
+#in9:checked~.box .main {
+    display: none;
+}
+
+#in9:checked~.box .right {
+    background-color: deepskyblue;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+#in12:checked~.box {
+    display: flex;
+}
+
+#in12:checked~.box .left {
+    background-color: deeppink;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+#in12:checked~.box .main {
+    background-color: green;
+    flex-grow: 1;
+}
+
+#in12:checked~.box .right {
+    background-color: deepskyblue;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+#in15:checked~.box {
+    display: flex;
+}
+
+#in15:checked~.box .left {
+    background-color: deeppink;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+#in15:checked~.box .main {
+    background-color: green;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+#in15:checked~.box .right {
+    background-color: deepskyblue;
+    flex-grow: 1;
+}
