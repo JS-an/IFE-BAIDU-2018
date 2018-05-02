@@ -20,6 +20,9 @@ https://js-an.github.io/IFE-BAIDU-2018/cube/cube.html
 <hr>
 slider
 https://js-an.github.io/IFE-BAIDU-2018/sliderAnima/slider.html
+<hr>
+animation
+https://js-an.github.io/IFE-BAIDU-2018/animation/animation.html
 
 <hr>
 零基础学院
