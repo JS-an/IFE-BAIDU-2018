@@ -1,0 +1,91 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+p {
+    position: absolute;
+    height: 35px;
+    color: #888;
+    font-size: 25px;
+}
+
+.line {
+    width: 358px;
+    height: 1px;
+    border-bottom: 1px solid #888;
+    margin-top: 3px;
+}
+
+.line-go {
+    position: absolute;
+    transform: translateY(-1px);
+    height: 1px;
+    border-bottom: 1px solid #888;
+}
+
+.box {
+    padding: 0 20px;
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 5px #eee;
+}
+
+.login {
+    height: 100px;
+    line-height: 100px;
+    font-size: 45px;
+    font-weight: 800;
+}
+
+.usename {
+    height: 100px;
+    padding-top: 30px;
+}
+
+.usename input {
+    margin-top: 20px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    width: 358px;
+    height: 30px;
+}
+
+.password {
+    height: 100px;
+    padding-top: 30px;
+}
+
+.password input {
+    margin-top: 20px;
+    font-size: 20px;
+    outline: none;
+    border: none;
+    width: 358px;
+    height: 30px;
+}
+
+.submit {
+    text-align: center;
+    height: 100px;
+}
+
+.submit input {
+    font-size: 20px;
+    outline: none;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    background-color: dodgerblue;
+    width: 358px;
+    height: 50px;
+    margin-top: 25px;
+}
