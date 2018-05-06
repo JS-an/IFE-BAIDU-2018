@@ -1,0 +1,337 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*左侧功能栏*/
+
+.application {
+    width: 100px;
+    background-color: #1d2531;
+    position: fixed;
+    height: 100%;
+}
+
+.application>div {
+    width: 60px;
+    height: 60px;
+    margin: 20px 0 0 20px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.application-bottom {
+    position: absolute;
+    bottom: 0;
+    line-height: 60px;
+}
+
+.application-bottom a {
+    text-decoration: none;
+    margin-left: 8px;
+}
+
+/*鼠标移动效果*/
+
+.application-light:hover {
+    box-shadow: 0 0 20px 2px #ccc
+}
+
+.application-bottom img:hover {
+    transform: scale(1.5);
+}
+
+/*导航*/
+
+.navigation {
+    width: 250px;
+    height: 100%;
+    background-color: #222c3c;
+    position: fixed;
+    left: 100px;
+    color: #fff;
+}
+
+.navigation>div {
+    width: 190px;
+    margin-left: 30px;
+    padding-top: 30px;
+    font-size: 13px;
+    color: #b7c0cd;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.navigation-box1 {
+    height: 255px;
+    border-bottom: 1px solid #213547;
+}
+
+.navigation-box1>div {
+    height: 36px;
+}
+
+.navigation-box1 p {
+    color: #576375;
+}
+
+.navigation-box1 span {
+    width: 32px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background-color: #2da1f8;
+    border-radius: 12px;
+}
+
+.navigation-box2 {
+    height: 220px;
+    border-bottom: 1px solid #213547;
+}
+
+.navigation-box2>div {
+    height: 36px;
+}
+
+.navigation-box2 p {
+    color: #576375;
+}
+
+.navigation-box2 img {
+    width: 16px;
+    vertical-align: text-bottom;
+    margin-right: 10px;
+}
+
+.navigation-box3 {
+    height: 255px;
+}
+
+.navigation-box3>div {
+    height: 36px;
+}
+
+.navigation-box3 p {
+    color: #576375;
+}
+
+.navigation-box3 span {
+    width: 32px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background-color: #2da1f8;
+    border-radius: 12px;
+}
+
+.navigation-bottom {
+    position: absolute;
+    bottom: 30px;
+}
+
+.navigation-bottom-slip {
+    font-size: 0px;
+    width: 190px;
+    margin-top: 28px;
+    background-color: #2d3848;
+    border-radius: 2px;
+    clear: both;
+}
+
+/*鼠标移动效果*/
+
+.navigation>div>div:hover {
+    color: #fc9;
+    cursor: pointer;
+}
+
+/*content*/
+
+.content {
+    position: relative;
+    margin-left: 350px;
+}
+
+/*header*/
+
+header {
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px solid #e6e9ec;
+}
+
+.content-title {
+    height: 80px;
+    line-height: 80px;
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+.content-people {
+    margin-right: 30px;
+}
+
+.content-people img {
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.triangle {
+    margin-top: 35px;
+    width: 10px;
+    height: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: transparent #999 #999 transparent;
+    transform: rotate(-135deg);
+    -webkit-transition: transform .2s;
+    -moz-transition: transform .2s;
+    transition: transform .2s;
+}
+
+.content-people-name {
+    margin: 20px 40px 0 20px;
+}
+
+.content-people-name p {
+    color: #b5b5b5;
+    height: 20px;
+    line-height: 20px;
+}
+
+.content-people-name p:first-child {
+    color: #2399f1
+}
+
+.triangle:hover {
+    transform: rotate(45deg);
+}
+
+/*nav*/
+
+nav {
+    width: 400px;
+    border-right: 1px solid #e5e8ee;
+}
+
+nav>div {
+    height: 130px;
+    padding: 18px 20px 0 30px;
+    border-bottom: 1px solid #e5e8ee;
+    font-size: 14px;
+    color: #858889;
+}
+
+article {
+    height: 130px;
+    padding: 18px 20px 0 30px;
+    border-bottom: 1px solid #e5e8ee;
+    font-size: 14px;
+    color: #858889;
+}
+
+.search {
+    height: 70px;
+}
+
+.search input {
+    width: 340px;
+    height: 34px;
+    padding: 0 15px;
+    outline: none;
+    border: 1px solid #e5e8ee;
+    border-radius: 5px;
+    background: url(./images/Searchicon.png) right center no-repeat content-box;
+}
+
+.message-up div {
+    line-height: 46px;
+}
+
+.message-up p {
+    height: 23px;
+    margin-left: 65px;
+}
+
+.blod {
+    font-size: 16px;
+    color: #000;
+    font-weight: 700;
+}
+
+.message-dowm {
+    clear: both;
+    margin-top: 15px;
+}
+
+/*鼠标移入效果*/
+
+nav>div:hover {
+    border-left: 3px solid #2399f1;
+    background-color: #eee;
+}
+
+/*main*/
+
+.main {
+    position: absolute;
+    padding-left: 400px;
+    top: 80px;
+    width: 100%;
+}
+
+.main-up {
+    height: 70px;
+    border-bottom: 1px solid #e5e8ee
+}
+
+.main-up-title {
+    margin-left: 30px;
+    height: 70px;
+    line-height: 70px;
+}
+
+.main-up-page {
+    width: 170px;
+}
+
+.main-up-page p {
+    font-size: 13px;
+    border-left: 1px solid #e5e8ee;
+    margin-top: 20px;
+    padding-left: 20px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.main-up-page>div {
+    margin: 19px 20px 0 0;
+}
+
+.main-up-page>div>div {
+    width: 36px;
+    height: 32px;
+    border: 1px solid #e5e8ee;
+    background-color: #f8f9fb;
+    padding: 3px 0 0 14px;
+    cursor: pointer;
+}
+
+.bd-left {
+    border-radius: 5px 0 0 5px;
+}
+
+.bd-right {
+    border-radius: 0 5px 5px 0;
+}
+
+.main-up-data {
+    margin-right: 20px;
+}
