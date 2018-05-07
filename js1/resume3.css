@@ -113,6 +113,7 @@ p {
 }
 
 .message p {
+    max-width: 250px;
     word-wrap: break-word;
     position: relative;
     float: left;
