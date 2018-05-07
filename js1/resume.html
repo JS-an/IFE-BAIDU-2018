@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>resume</title>
+    <meta charset="utf-8">
+    <link id="lk" rel="stylesheet" href="./resume3.css">
+</head>
+
+<body>
+    <header>简历</header>
+    <article>
+        <section class="dowm1">
+            <h2>基本信息</h2>
+            <ul class="left-float">
+                <li>姓名<span>Allen</span></li>
+                <li>性别<span>男</span></li>
+                <li>应聘职位<span>Web前端工程师</span></li>
+            </ul>
+        </section>
+        <section class="dowm1">
+            <h2>联系方式</h2>
+            <ul class="left-float">
+                <li>手机<span>16666666666</span></li>
+                <li>Email<a href="#">666666666@qq.com</a></li>
+                <li>个人主页
+                    <a href="https://github.com/JS-an">Github</a>
+                </li>
+            </ul>
+        </section>
+        <section class="dowm2">
+            <h2>能力描述</h2>
+            <ul>
+                <li>技术能力
+                    <p>熟练掌握HTML,CSS,JavaScript</p>
+                </li>
+                <li>综合能力
+                    <p>良好的沟通，主动积极，努力勤奋</p>
+                </li>
+            </ul>
+        </section>
+        <section class="dowm2">
+            <h2>教育经历</h2>
+            <ul>
+                <li>本科
+                    <p>百度前端技术学院小薇学院</p>
+                </li>
+                <li>研究生
+                    <p>百度前端技术学院大斌学院</p>
+                </li>
+            </ul>
+        </section>
+        <section class="dowm2">
+            <h2>项目经历</h2>
+            <ul>
+                <li>小度小度
+                    <p>作为前端工程师角色参与了ABC组件的开发</p>
+                </li>
+                <li>SAN Doc
+                    <p>作为文档工程师参与了SAN Doc编写</p>
+                </li>
+            </ul>
+        </section>
+        <section class="talk">
+            <div id="message" class="message"></div>
+            <div id="text" class="text">
+                <input id="input" class="input" type="text" placeholder="message">
+                <input id="submit" class="submit" type="submit" value="submit">
+            </div>
+        </section>
+    </article>
+</body>
+<script>
+    const message = document.getElementById('message'),
+        input = document.getElementById('input'),
+        submit = document.getElementById('submit')
+    const addmsg = function addmsg() {
+        let newmsg = input.value
+        if (newmsg) {
+            let newp = document.createElement('p'),
+                node = document.createTextNode(newmsg)
+            newp.appendChild(node)
+            message.appendChild(newp)
+            input.value = ''
+        }
+    }
+    const keyd = function (e) {
+        let k = window.event ? e.keyCode : e.which
+        if (k == 13) {
+            addmsg()
+        }
+    }
+    submit.onclick = addmsg
+    document.onkeydown = keyd
+
+</script>
+
+</html>
