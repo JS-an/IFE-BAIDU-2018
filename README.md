@@ -38,3 +38,7 @@ https://js-an.github.io/IFE-BAIDU-2018/designchart/designchart.html
 <hr>
 blog
 https://js-an.github.io/IFE-BAIDU-2018/blog/blog.html
+<hr>
+resume.html
+https://js-an.github.io/IFE-BAIDU-2018/js1/resume.html
+
