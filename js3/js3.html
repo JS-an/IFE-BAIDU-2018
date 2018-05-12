@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>IFE ECMAScript</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="news-top" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li><span>HTML</span><a href="">Some Link1</a></li>
+                    <li><span>JS</span><a class="active" href="">Some Link2</a></li>
+                    <li><span>CSS</span><a href="">Some Link3</a></li>
+                    <li><span>JS</span><a href="">Some Link4</a></li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>
+        <div id="news-normal" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li><span>HTML</span><a href="">Some Link1</a></li>
+                    <li><span>HTML</span><a href="">Some Link2</a></li>
+                    <li><span>JS</span><a class="active" href="#">Some Link3</a></li>
+                    <li><span>CSS</span><a href="">Some Link4</a></li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>
+        <button onclick="getAllListItem()">click Me one</button>
+        <button onclick="findAllHtmlSpanInOneSection('news-normal')">click Me two</button>
+        <button onclick="findListItem('news-top','JS')">click Me three</button>
+        <button onclick="getActiveLinkContent('news-normal')">click Me four</button>
+    </div>
+    <script>
+        function getAllListItem() {
+            // 返回页面中所有li标签
+            //     let lis = document.getElementsByTagName('li')
+            //     for (let i = 0; i < lis.length; i++) {
+            //         lis[i].style.color = 'red'
+            //     }
+            let lis = document.querySelectorAll('li')
+            for (let i = 0; i < lis.length; i++) {
+                lis[i].style.color = 'red'
+            }
+        }
+
+        function findAllHtmlSpanInOneSection(sectionId) {
+            // 返回某个section下所有span中内容为HTML的span标签
+            // let newel = document.getElementById(sectionId),
+            //     spanhtml = newel.getElementsByTagName('span')
+            // for (let i = 0; i < spanhtml.length; i++) {
+            //     spantxt = spanhtml[i].innerHTML
+            //     if (spantxt == 'HTML') {
+            //         spanhtml[i].style.color = 'red'
+            //     }
+            // }
+            let newel = document.querySelector('#' + sectionId),
+                spanhtml = newel.querySelectorAll('span')
+            for (let i = 0; i < spanhtml.length; i++) {
+                spantxt = spanhtml[i].innerHTML
+                if (spantxt == 'HTML') {
+                    spanhtml[i].style.color = 'red'
+                }
+            }
+        }
+
+        function findListItem(sectionId, spanCont) {
+            // 返回某个section下，所有所包含span内容为spanCont的LI标签
+            //     let newel2 = document.getElementById(sectionId),
+            //         lis2 = newel2.getElementsByTagName('li')
+            //     for (let i = 0; i < lis2.length; i++) {
+            //         spantxt2 = lis2[i].getElementsByTagName('span')
+            //         for (let j = 0; j < spantxt2.length; j++) {
+            //             txt = spantxt2[j].innerHTML
+            //             if (txt == spanCont) {
+            //                 lis2[i].style.color = 'red'
+            //             }
+            //         }
+            //     }
+            // }
+            let newel2 = document.querySelector('#' + sectionId),
+                lis2 = newel2.querySelectorAll('li')
+            for (let i = 0; i < lis2.length; i++) {
+                spantxt2 = lis2[i].querySelectorAll('span')
+                for (let j = 0; j < spantxt2.length; j++) {
+                    txt = spantxt2[j].innerHTML
+                    if (txt == spanCont) {
+                        lis2[i].style.color = 'red'
+                    }
+                }
+            }
+        }
+
+        function getActiveLinkContent(sectionId) {
+            // 返回某个section下，class为active的链接中包含的文字内容
+            //     let newel3 = document.getElementById(sectionId),
+            //         active = newel3.getElementsByClassName('active')
+            //     for (let i = 0; i < active.length; i++) {
+            //         active[i].style.color = 'red'
+            //     }
+            // }
+            let newel3 = document.querySelector('#' + sectionId),
+                active = newel3.querySelectorAll('.active')
+            for (let i = 0; i < active.length; i++) {
+                active[i].style.color = 'red'
+            }
+        }
+    </script>
+</body>
+
+</html>
