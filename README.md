@@ -47,3 +47,6 @@ https://js-an.github.io/IFE-BAIDU-2018/js2/resume.html
 <hr>
 js3
 https://js-an.github.io/IFE-BAIDU-2018/js3/js3.html
+<hr>
+js4
+https://js-an.github.io/IFE-BAIDU-2018/js4/js4.html
