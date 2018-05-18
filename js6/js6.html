@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        #dog {
+            font-size: 0;
+            position: absolute;
+            transition: all .2s;
+        }
+    </style>
+</head>
+
+<body>
+    按方向键即可移动
+    <div id="dog" style="top:0px;left:0px;"><img src="./dog.png" alt=""></div>
+    <div id="done"></div>
+    <div id="dtwo"></div>
+    <div id="time-list">
+        <select id="year-select">
+    <option value="2000">2000</option>
+    <option value="2001">2001</option>
+    <option value="2002">2002</option>
+    ……
+    <option value="2032">2002</option>
+</select>
+        <select id="month-select">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    ……
+    <option value="12">12</option>
+</select>
+        <select id="day-select">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    ……
+    <option value="31">31</option>
+</select>
+        <select id="hour-select">
+    <option value="0">00</option>
+    <option value="1">01</option>        
+    ……
+    <option value="23">23</option>
+</select>
+        <select id="minite-select">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    ……
+    <option>59</option>
+</select>
+        <select id="second-select">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    ……
+    <option>59</option>
+</select>
+        <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+    </div>
+    <script>
+        window.onload = function () {
+            //任务一
+            const dog = document.querySelector('#dog')
+
+            document.addEventListener('keydown', function (e) {
+                let k = e.keyCode
+                if (k == 37) {
+                    left()
+                }
+                if (k == 38) {
+                    go()
+                }
+                if (k == 39) {
+                    right()
+                }
+                if (k == 40) {
+                    down()
+                }
+            })
+
+            function left() {
+                let x = parseInt(dog.style.left) - 102
+                dog.style.transform = 'rotate(-90deg)'
+                if (x >= 0) {
+                    dog.style.left = x + 'px'
+                }
+            }
+
+            function go() {
+                let y = parseInt(dog.style.top) - 102
+                dog.style.transform = 'rotate(0deg)'
+                if (y >= 0) {
+                    dog.style.top = y + 'px'
+                }
+            }
+
+            function right() {
+                let x = parseInt(dog.style.left) + 102
+                dog.style.transform = 'rotate(90deg)'
+                if (x >= 0) {
+                    dog.style.left = x + 'px'
+                }
+            }
+
+            function down() {
+                let y = parseInt(dog.style.top) + 102
+                dog.style.transform = 'rotate(180deg)'
+                if (y >= 0) {
+                    dog.style.top = y + 'px'
+                }
+            }
+
+            //任务二
+            const done = document.querySelector('#done'),
+                dtwo = document.querySelector('#dtwo')
+            setInterval(function () {
+                let time = new Date(),
+                    year = time.getFullYear(),
+                    month = number(time.getMonth() + 1),
+                    date = number(time.getDate()),
+                    daycn = day(time, 0),
+                    dayen = day(time, 1),
+                    hours = number(time.getHours()),
+                    minutes = number(time.getMinutes()),
+                    seconds = number(time.getSeconds())
+                done.innerHTML = year + '年' + month + '月' + date + '日' + daycn + hours + ':' + minutes +
+                    ':' + seconds
+                dtwo.innerHTML = year + '-' + month + '-' + date + '&nbsp' + dayen + '&nbsp' + hours + ':' +
+                    minutes + ':' + seconds
+            }, 100)
+
+            //转换数字为星期,输入参数i=0位中文，i=1为英文
+            function day(time, i) {
+                let days = [
+                    ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+                    ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+                ]
+                return days[i][time.getDay()]
+            }
+
+            //小于两位数的值前面加0
+            function number(num) {
+                parseInt(num)
+                if (num < 10) {
+                    return num = '0' + num
+                } else {
+                    return num
+                }
+            }
+
+            //任务三
+
+
+        }
+    </script>
+</body>
+
+</html>
