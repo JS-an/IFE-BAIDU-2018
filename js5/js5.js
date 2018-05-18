@@ -492,5 +492,21 @@
          [7, "Area1-2-3", 4],
          [8, "Area2-2-1", 6],
      ];
+     let arr75 = []
+     for (let i in scoreObject) {
+         let k = [i]
+         for (let j in scoreObject[i]) {
+             k.push(scoreObject[i][j])
+         }
+         arr75.push(k)
+     }
+     console.log(arr75)
+     let obj76 = {
+         '-1': {}
+     }
+     for (let i = 0; i < menuArr.length; i++) {
+         //数组的第三项是父节点的键值，有点晕下次再做
+     }
+     console.log(obj76)
 
  }
