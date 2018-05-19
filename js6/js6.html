@@ -22,6 +22,17 @@
             position: absolute;
             transition: all .2s;
         }
+
+        select {
+            font-size: 16px;
+            width: 80px;
+            height: 26px;
+            border-radius: 5px;
+        }
+
+        option {
+            font-size: 20px;
+        }
     </style>
 </head>
 
@@ -31,43 +42,12 @@
     <div id="done"></div>
     <div id="dtwo"></div>
     <div id="time-list">
-        <select id="year-select">
-    <option value="2000">2000</option>
-    <option value="2001">2001</option>
-    <option value="2002">2002</option>
-    ……
-    <option value="2032">2002</option>
-</select>
-        <select id="month-select">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    ……
-    <option value="12">12</option>
-</select>
-        <select id="day-select">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    ……
-    <option value="31">31</option>
-</select>
-        <select id="hour-select">
-    <option value="0">00</option>
-    <option value="1">01</option>        
-    ……
-    <option value="23">23</option>
-</select>
-        <select id="minite-select">
-    <option value="0">0</option>
-    <option value="1">1</option>
-    ……
-    <option>59</option>
-</select>
-        <select id="second-select">
-    <option value="0">0</option>
-    <option value="1">1</option>
-    ……
-    <option>59</option>
-</select>
+        <select id="year-select"></select>
+        <select id="month-select"></select>
+        <select id="day-select"></select>
+        <select id="hour-select"></select>
+        <select id="minite-select"></select>
+        <select id="second-select"></select>
         <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
     </div>
     <script>
@@ -126,21 +106,34 @@
             //任务二
             const done = document.querySelector('#done'),
                 dtwo = document.querySelector('#dtwo')
+
             setInterval(function () {
+                showtime()
+            }, 200)
+
+            //显示时间
+            function showtime() {
+                let t = gettime()
+                done.innerHTML = t[0] + '年' + t[1] + '月' + t[2] + '日' + t[6] + t[3] + ':' + t[4] +
+                    ':' + t[5]
+                dtwo.innerHTML = t[0] + '-' + t[1] + '-' + t[2] + '&nbsp' + t[7] + '&nbsp' + t[3] +
+                    ':' + t[4] + ':' + t[5]
+            }
+
+            //获得当前时间数组
+            function gettime() {
                 let time = new Date(),
-                    year = time.getFullYear(),
-                    month = number(time.getMonth() + 1),
-                    date = number(time.getDate()),
-                    daycn = day(time, 0),
-                    dayen = day(time, 1),
-                    hours = number(time.getHours()),
-                    minutes = number(time.getMinutes()),
-                    seconds = number(time.getSeconds())
-                done.innerHTML = year + '年' + month + '月' + date + '日' + daycn + hours + ':' + minutes +
-                    ':' + seconds
-                dtwo.innerHTML = year + '-' + month + '-' + date + '&nbsp' + dayen + '&nbsp' + hours + ':' +
-                    minutes + ':' + seconds
-            }, 100)
+                    times = []
+                times.push(time.getFullYear()) //年,0
+                times.push(number(time.getMonth() + 1)) //月,1
+                times.push(number(time.getDate())) //日,2
+                times.push(number(time.getHours())) //时,3
+                times.push(number(time.getMinutes())) //分,4
+                times.push(number(time.getSeconds())) //秒,5
+                times.push(day(time, 0)) //中文星期,6
+                times.push(day(time, 1)) //英文星期,7
+                return times
+            }
 
             //转换数字为星期,输入参数i=0位中文，i=1为英文
             function day(time, i) {
@@ -155,15 +148,126 @@
             function number(num) {
                 parseInt(num)
                 if (num < 10) {
-                    return num = '0' + num
-                } else {
-                    return num
+                    num = '0' + num
                 }
+                return num
             }
 
             //任务三
+            const timelist = document.querySelectorAll('select')
+            let resultw = document.querySelector('#result-wrapper')
+            draw()
 
+            //绘制所需时间列表
+            function draw() {
+                for (let i = 0; i < 60; i++) {
+                    //绘制年数
+                    let child = document.createElement('option'),
+                        txt = document.createTextNode(1970 + i)
+                    child.value = 1970 + i
+                    child.appendChild(txt)
+                    timelist[0].appendChild(child)
 
+                    //绘制月数
+                    if (i < 12) {
+                        let child = document.createElement('option'),
+                            txt = document.createTextNode(1 + i)
+                        child.value = 1 + i
+                        child.appendChild(txt)
+                        timelist[1].appendChild(child)
+                    }
+                    //日数特殊，进行另外绘制
+                    drawday()
+                    //绘制时
+                    if (i < 24) {
+                        let child = document.createElement('option'),
+                            txt = document.createTextNode(i)
+                        child.value = i
+                        child.appendChild(txt)
+                        timelist[3].appendChild(child)
+                    }
+
+                    //绘制分和秒
+                    if (i < 60) {
+                        let childm = document.createElement('option'),
+                            txtm = document.createTextNode(i),
+                            childs = document.createElement('option'),
+                            txts = document.createTextNode(i)
+                        childm.value = i
+                        childs.value = i
+                        childm.appendChild(txtm)
+                        timelist[4].appendChild(childm)
+                        childs.appendChild(txts)
+                        timelist[5].appendChild(childs)
+                    }
+                }
+
+                //添加更改内容事件
+                for (let i = 0; i < timelist.length; i++) {
+                    timelist[i].addEventListener('change', function () {
+                        istime(reducetime())
+                    })
+                }
+            }
+
+            //绘制日期
+            timelist[0].addEventListener('change', function () {
+                drawday()
+            })
+            timelist[1].addEventListener('change', function () {
+                drawday()
+            })
+
+            function drawday() {
+                timelist[2].innerHTML = ''
+                let k = 31,
+                    t1 = timelist[1].value
+                if (t1 == 4 || t1 == 6 || t1 == 9 || t1 == 11) {
+                    k = 30
+                } else if (t1 == 2) {
+                    k = 28
+                } else if (t1 == 2 && timelist[0].value % 4 == 0) {
+                    k = 29
+                }
+                for (let i = 0; i < k; i++) {
+                    let child = document.createElement('option'),
+                        txt = document.createTextNode(1 + i)
+                    child.value = 1 + i
+                    child.appendChild(txt)
+                    timelist[2].appendChild(child)
+                }
+            }
+
+            //存放时间差
+            function reducetime() {
+                let reduces = [],
+                    settime = Date.parse(timelist[1].value + ' ' + timelist[2].value + ' ' + timelist[0].value +
+                        ' ' + timelist[3].value + ':' + timelist[4].value + ':' + timelist[5].value), //输入的时间毫秒数
+                    nowtime = new Date().getTime(), //现在的时间毫秒数
+                    reduce = settime - nowtime,
+                    y1 = reduce % 86400000, //取余
+                    y2 = y1 % 3600000,
+                    y3 = y2 % 60000
+                reduces.push(reduce) //毫秒时间差值
+                reduces.push(Math.floor(Math.abs(reduce / 86400000))) //天数差
+                reduces.push(Math.floor(Math.abs(y1 / 3600000))) //小时差
+                reduces.push(Math.floor(Math.abs(y2 / 60000))) //分钟差
+                reduces.push(Math.floor(Math.abs(y3 / 1000))) //秒数差
+                return reduces
+            }
+
+            //比较时间
+            function istime(rt) {
+                let settxt = '现在距离' + timelist[0].value + '年' + timelist[1].value + '月' + timelist[2]
+                    .value + '日' + timelist[3].value + ':' + timelist[4].value + ':' + timelist[5].value
+                if (rt[0] > 0) {
+                    resultw.innerHTML = settxt + ' 还有 ' + rt[1] + '天' + rt[2] + '小时' + rt[3] + '分' + rt[4] +
+                        '秒'
+                } else {
+                    resultw.innerHTML = settxt + ' 已经过去 ' + rt[1] + '天' + rt[2] + '小时' + rt[3] + '分' + rt[4] +
+                        '秒'
+                }
+            }
         }
     </script>
 </body>
