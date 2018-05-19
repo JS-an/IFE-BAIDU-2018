@@ -53,3 +53,6 @@ https://js-an.github.io/IFE-BAIDU-2018/js4/js4.html
 <hr>
 js5
 https://js-an.github.io/IFE-BAIDU-2018/js5/js5.html
+<hr>
+js6
+https://js-an.github.io/IFE-BAIDU-2018/js6/js6.html
