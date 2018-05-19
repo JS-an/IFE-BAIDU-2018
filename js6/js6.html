@@ -117,7 +117,7 @@
                 done.innerHTML = t[0] + '年' + t[1] + '月' + t[2] + '日' + t[6] + t[3] + ':' + t[4] +
                     ':' + t[5]
                 dtwo.innerHTML = t[0] + '-' + t[1] + '-' + t[2] + '&nbsp' + t[7] + '&nbsp' + t[3] +
-                    ':' + t[4] + ':' + t[5]
+                    ':' + t[4] + ':' + t[5] + '&nbsp' + t[8]
             }
 
             //获得当前时间数组
@@ -132,6 +132,12 @@
                 times.push(number(time.getSeconds())) //秒,5
                 times.push(day(time, 0)) //中文星期,6
                 times.push(day(time, 1)) //英文星期,7
+                //AM与PM,8
+                if (times[3] < 12) {
+                    times.push('AM')
+                } else {
+                    times.push('PM')
+                }
                 return times
             }
 
