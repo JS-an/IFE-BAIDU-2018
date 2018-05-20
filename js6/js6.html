@@ -231,9 +231,11 @@
                 if (t1 == 4 || t1 == 6 || t1 == 9 || t1 == 11) {
                     k = 30
                 } else if (t1 == 2) {
-                    k = 28
-                } else if (t1 == 2 && timelist[0].value % 4 == 0) {
-                    k = 29
+                    if (timelist[0].value % 4 == 0) {
+                        k = 29
+                    } else {
+                        k = 28
+                    }
                 }
                 for (let i = 0; i < k; i++) {
                     let child = document.createElement('option'),
