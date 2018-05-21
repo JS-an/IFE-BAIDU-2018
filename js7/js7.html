@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style lang="zh">
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .wrapper {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #email-input {
+            outline: none;
+            padding: 0 15px;
+            width: 300px;
+            height: 40px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+
+        .email-sug {
+            display: none;
+            list-style: none;
+            text-align: left;
+            margin: 0 auto;
+            width: 300px;
+            padding: 0 15px;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+
+        li {
+            height: 26px;
+            line-height: 26px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text" placeholder="请输入邮箱">
+        <ul id="email-sug-wrapper" class="email-sug">
+        </ul>
+    </div>
+
+    <script src="./js7.js"></script>
+</body>
+
+</html>
