@@ -32,21 +32,13 @@ window.onload = function () {
         if (li.length != 0 && esw.style.display == 'block') { //判断是否符合进行键盘事件
             switch (e.keyCode) {
                 case 38:
-                    setColor(li, liIndex, 0) //重置上一项的背景
-                    if (liIndex <= 0) {
-                        liIndex = 4
-                    } else {
-                        liIndex--
-                    }
+                    setColor(li, liIndex, 0); //重置上一项的背景
+                    (liIndex <= 0) ? liIndex = 4: liIndex--; //三元表达式要注意前后是否有“;”来开始与结束语句
                     setColor(li, liIndex, 1) //设置背景
                     break;
                 case 40:
-                    setColor(li, liIndex, 0)
-                    if (liIndex >= 4) {
-                        liIndex = 0
-                    } else {
-                        liIndex++
-                    }
+                    setColor(li, liIndex, 0);
+                    (liIndex >= 4) ? liIndex = 0: liIndex++;
                     setColor(li, liIndex, 1)
                     break;
                 case 13:
@@ -108,11 +100,7 @@ window.onload = function () {
 
     //获取@前面输入内容
     function getLeft(eivalue, cindex) {
-        if (cindex >= 0) {
-            return eivalue.slice(0, cindex)
-        } else {
-            return eivalue
-        }
+        return (cindex >= 0) ? eivalue.slice(0, cindex) : eivalue;
     }
 
     //匹配@后面的内容
