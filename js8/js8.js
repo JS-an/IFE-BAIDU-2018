@@ -200,9 +200,32 @@
         }
     }
 
+    //合并单元格
+    function mergeCell() {
+        let allTr = document.querySelectorAll('tr'),
+            rows = 1
+        for (let i = 2; i <= allTr.length; i++) {
+            if (i == allTr.length) {
+                allTr[i - rows].firstChild.setAttribute('rowspan', rows)
+                rows = 1
+            } else if (allTr[i].firstChild.innerHTML == allTr[i - 1].firstChild.innerHTML) {
+                rows++
+            } else {
+                allTr[i - rows].firstChild.setAttribute('rowspan', rows)
+                rows = 1
+            }
+        }
+        for (let i = 1; i < allTr.length; i++) {
+            if (!allTr[i].children[0].getAttribute('rowspan')) {
+                allTr[i].removeChild(allTr[i].children[0])
+            }
+        }
+    }
+
     //添加事件
     radioWrapper.addEventListener('click', function () { // 因只需判断复选框有无勾选，所以不需绑定在input标签上
         drawTable()
+        mergeCell()
     })
     productRadioWrapper.addEventListener('click', function (e) {
         let productValue = document.querySelectorAll('#product-radio-wrapper input')
@@ -212,8 +235,10 @@
         let regionValue = document.querySelectorAll('#region-radio-wrapper input')
         checkAll(e.target, regionValue)
     })
+
     //初始化
     drawCheckBox()
     drawTable()
+    mergeCell()
 
 }())
