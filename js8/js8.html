@@ -7,22 +7,56 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MIS</title>
     <style lang="zh">
-        ul {
-            float: left;
-            margin-right: 30px;
+        * {
             padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        ul {
+            margin: 20px;
         }
 
         li {
+            float: left;
             list-style: none;
             font-size: 20px;
+            margin-right: 20px;
         }
 
         th,
         td {
             border: 1px solid #ddd;
-            width: 65px;
-            height: 40px;
+            width: 80px;
+            height: 32px;
+        }
+
+        #table-wrapper {
+            clear: both;
+            font-size: 14px;
+            margin-left: 20px;
+        }
+
+        .chart {
+            min-width: 1420px;
+            width: 100%;
+            float: left;
+        }
+
+        svg {
+            width: 100%;
+        }
+
+        .late {
+            transform: translateX(20px)
+        }
+
+        text {
+            font-size: 12px;
+        }
+
+        rect {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -34,6 +68,10 @@
             <ul id="product-radio-wrapper"></ul>
             <ul id="region-radio-wrapper"></ul>
         </div>
+        <div class="chart">
+            <svg id="svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
+            </svg>
+        </div>
         <div id="table-wrapper">
             <p>只要按照格式添加sourceData数据，就可一直渲染增加数据</p>
             <form action="">
@@ -42,7 +80,6 @@
                 </table>
             </form>
         </div>
-
     </div>
 
     <script src="./js8.js"></script>
