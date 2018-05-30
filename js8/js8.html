@@ -21,7 +21,7 @@
             float: left;
             list-style: none;
             font-size: 20px;
-            margin-right: 20px;
+            width: 100px;
         }
 
         th,
@@ -38,6 +38,7 @@
         }
 
         .chart {
+            position: relative;
             min-width: 1420px;
             width: 100%;
             float: left;
@@ -47,8 +48,31 @@
             width: 100%;
         }
 
+        .dark {
+            position: absolute;
+            background-color: #000;
+            opacity: 0.7;
+            border-radius: 5px;
+            padding: 20px 5px;
+            width: 150px;
+            transition: all .1s;
+        }
+
+        p {
+            color: #fff;
+            word-wrap: none;
+        }
+
+        .mask {
+            position: absolute;
+            background-color: #000;
+            opacity: 0.2;
+            top: 0px;
+            width: 116px;
+        }
+
         .late {
-            transform: translateX(20px)
+            transform: translateX(25px);
         }
 
         text {
@@ -69,8 +93,10 @@
             <ul id="region-radio-wrapper"></ul>
         </div>
         <div class="chart">
+            <div class="mask"></div>
             <svg id="svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
             </svg>
+            <div class="dark"></div>
         </div>
         <div id="table-wrapper">
             <p>只要按照格式添加sourceData数据，就可一直渲染增加数据</p>

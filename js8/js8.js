@@ -37,14 +37,21 @@
             region: "华南",
             sale: [10, 40, 10, 6, 5, 6, 8, 6, 6, 6, 7, 26]
         }],
-        colors = ['#60acfc', '#32d3eb', '#5bc49f', '#feb64d', '#ff7c7c', '#9287e7', '#ef6bd4', '#ffc7c7', '#29787e'],
+        colors = ['#60acfc', '#32d3eb', '#5bc49f', '#feb64d', '#ff7c7c', '#9287e7'],
         tableTop = ['商品', '地区', '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        warp = document.querySelector('.wrap'),
         regionRadioWrapper = document.querySelector('#region-radio-wrapper'),
         productRadioWrapper = document.querySelector('#product-radio-wrapper'),
         radioWrapper = document.querySelector('#radio-wrapper'),
         tablewrapper = document.querySelector('#table-wrapper'),
         Table = document.querySelector('#table'),
-        svg = document.querySelector('#svg')
+        chart = document.querySelector('.chart'),
+        svg = document.querySelector('#svg'),
+        mask = document.querySelector('.mask'),
+        dark = document.querySelector('.dark'),
+        sourceArr = [],
+        svgNode = 'http://www.w3.org/2000/svg',
+        max
 
     //绘画选择按钮
     function drawCheckBox() {
@@ -228,17 +235,15 @@
     //绘画图表
     function drawChart() {
         svg.innerHTML = ''
+        sourceArr = []
         let allTr = document.querySelectorAll('tr'),
-            sourceArr = [],
             sourceMax = [],
-            svgNode = 'http://www.w3.org/2000/svg',
             len = allTr.length,
             x = 0,
             queuesFrist = -1,
             queuesSecond = -1,
             num = 0,
-            color,
-            max
+            color
         //获得数据
         for (let i = 0; i < len; i++) {
             let count = allTr[i].childElementCount
@@ -274,11 +279,11 @@
                     lineY = document.createElementNS(svgNode, 'line'),
                     textMonth = document.createElementNS(svgNode, 'text')
                 //有两种样式的线条
-                i === 0 ? (x1 = 25, y1 = 0, s1 = 'stroke-width:2;stroke:rgb(0,0,0);') : (x1 = i * 116 + 20, y1 = max, s1 = 'stroke-width:1;stroke:rgb(200,200,200);');
+                i === 0 ? (x1 = 25, y1 = 0, s1 = 'stroke-width:2;stroke:rgb(0,0,0);') : (x1 = i * 116 + 25, y1 = max, s1 = 'stroke-width:1;stroke:rgb(200,200,200);');
                 //月份
                 textMonth.innerHTML = sourceArr[0][i + 2]
                 textMonth.setAttribute('fill', '#000')
-                textMonth.setAttribute('x', (i + 1) * 116 - 50)
+                textMonth.setAttribute('x', (i + 1) * 116 - 45)
                 textMonth.setAttribute('y', max + 20)
                 lineG.appendChild(textMonth)
                 //销量
@@ -315,7 +320,13 @@
                     txtbefore1 = sourceArr[i - 1][0]
                 txt1 !== txtbefore1 && (queuesFrist++, num = 0); //隔开第一项的间隔
                 queuesSecond++ //调整每月开始绘制的起点
-                x = (queuesSecond + 1) * 10 + queuesFrist * 5
+                x = queuesSecond * 10 + queuesFrist * 5
+                if (i === 1) {
+                    for (let k = 0; k < 12; k++) {
+                        let monthG = document.createElementNS(svgNode, 'g')
+                        rectG.appendChild(monthG)
+                    }
+                }
                 for (let j = 0; j < count; j++) {
                     let txt = parseInt(sourceArr[i][j])
                     if (!isNaN(txt)) {
@@ -325,7 +336,7 @@
                         rect.setAttribute('width', '10')
                         rect.setAttribute('height', txt)
                         rect.setAttribute('style', 'fill:' + colors[num])
-                        rectG.appendChild(rect)
+                        rectG.children[j - 2].appendChild(rect)
                         x += 116 // 隔开每个月的对应的距离
                     }
                 }
@@ -334,6 +345,41 @@
             svg.appendChild(rectG)
         }
     }
+
+    //呈现月份背景与详细信息
+    function drawBgColor(e) {
+        dark.innerHTML = ''
+        //位置
+        let x = e.pageX,
+            y = e.pageY,
+            chartx = x - chart.offsetLeft,
+            charty = y - chart.offsetTop,
+            index = Math.floor((x - 20) / 116)
+        if (index >= 0 && index < 12 && charty < max && charty > 0) {
+            //月份遮罩层
+            mask.setAttribute('style', 'height:' + (max - 2) + 'px;left:' + (index * 116 + 25) + 'px;')
+            //详细信息位置跟随
+            index > 5 ? dark.setAttribute('style', 'top:' + charty + 'px;left:' + (chartx - 150) + 'px;') : dark.setAttribute('style', 'top:' + charty + 'px;left:' + chartx + 'px;')
+        } else {
+            mask.style.display = 'none'
+            dark.style.display = 'none'
+        }
+        //添加详细信息
+        sourceArr.forEach(function (el, i) {
+            let p = document.createElement('p'),
+                content
+            i === 0 ? content = '' : content = el[0] + '-' + el[1] + '：'
+            let ptxt = document.createTextNode(content + el[index + 2])
+            p.appendChild(ptxt)
+            dark.appendChild(p)
+        })
+    }
+
+    //初始化
+    drawCheckBox()
+    drawTable()
+    drawChart()
+    mergeCell()
 
     //添加事件
     radioWrapper.addEventListener('click', function () { // 因只需判断复选框有无勾选，所以不需绑定在input标签上
@@ -349,11 +395,8 @@
         let regionValue = document.querySelectorAll('#region-radio-wrapper input')
         checkAll(e.target, regionValue)
     })
-
-    //初始化
-    drawCheckBox()
-    drawTable()
-    drawChart()
-    mergeCell()
+    warp.addEventListener('mousemove', function (e) {
+        drawBgColor(e)
+    })
 
 }())
