@@ -37,7 +37,7 @@
             region: "华南",
             sale: [10, 40, 10, 6, 5, 6, 8, 6, 6, 6, 7, 26]
         }],
-        colors = ['#60acfc', '#32d3eb', '#5bc49f', '#feb64d', '#ff7c7c', '#9287e7'],
+        colors = ['#60acfc', '#32d3eb', '#5bc49f', '#feb64d', '#ff7c7c', '#9287e7', '#84df57', '#aaef45', '#5b36ef'],
         tableTop = ['商品', '地区', '一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
         warp = document.querySelector('.wrap'),
         regionRadioWrapper = document.querySelector('#region-radio-wrapper'),
@@ -49,6 +49,8 @@
         svg = document.querySelector('#svg'),
         mask = document.querySelector('.mask'),
         dark = document.querySelector('.dark'),
+        canvas = document.querySelector('#canvas'),
+        ctx = canvas.getContext('2d'),
         sourceArr = [],
         svgNode = 'http://www.w3.org/2000/svg',
         max
@@ -103,14 +105,6 @@
             checkBoxButton.innerHTML = '全选/反选'
             index === 0 ? productRadioWrapper.appendChild(checkBoxButton) : regionRadioWrapper.appendChild(checkBoxButton)
         })
-        // drawCheckBoxList[0].forEach(function (el) {
-        //     let checkBoxLi = createCheckBox(el)
-        //     productRadioWrapper.appendChild(checkBoxLi)
-        // })
-        // drawCheckBoxList[1].forEach(function (el) {
-        //     let checkBoxLi = createCheckBox(el)
-        //     regionRadioWrapper.appendChild(checkBoxLi)
-        // })
     }
 
     //绘制表格
@@ -232,41 +226,87 @@
         }
     }
 
-    //绘画图表
-    function drawChart() {
-        svg.innerHTML = ''
-        sourceArr = []
-        let allTr = document.querySelectorAll('tr'),
-            sourceMax = [],
-            len = allTr.length,
-            x = 0,
-            queuesFrist = -1,
-            queuesSecond = -1,
-            num = 0,
-            color
-        //获得数据
-        for (let i = 0; i < len; i++) {
-            let count = allTr[i].childElementCount
+    //获得数据
+    function getSourceArr(t) {
+        sourceArr = [] //清空数据
+        let allTr = t || document.querySelectorAll('tr')
+        if (t) {
+            let tdCount = allTr.childElementCount
+            sourceArr.push(tableTop)
             sourceArr.push([])
-            for (let j = 0; j < count; j++) {
-                sourceArr[i].push(allTr[i].children[j].innerHTML)
+            tdCount !== 14 && sourceArr[1].push('')
+            for (let i = 0; i < tdCount; i++) {
+                sourceArr[1].push(allTr.children[i].innerHTML)
+            }
+        } else {
+            for (let i = 0; i < allTr.length; i++) {
+                let count = allTr[i].childElementCount
+                sourceArr.push([])
+                for (let j = 0; j < count; j++) {
+                    sourceArr[i].push(allTr[i].children[j].innerHTML)
+                }
             }
         }
+    }
+
+    //获取最大值设定高度
+    function heightMax() {
+        let sourceMax = []
+        sourceArr.forEach(function (el, i) {
+            el.forEach(function (item) {
+                !isNaN(item) && sourceMax.push(item)
+            })
+        })
+        max = Math.max.apply(null, sourceMax)
+        svg.setAttribute('height', max + 50)
+        canvas.height = max / 2 + 30
+    }
+
+    //绘制柱状图
+    function drawChart() {
+        svg.innerHTML = ''
+        let x = 0,
+            queuesFrist = -1,
+            queuesSecond = -1,
+            num = 0
 
         //执行函数
         heightMax()
         drawChartAxis()
         drawChartRect()
+        drawRect()
 
-        //获取最大值设定SVG高度
-        function heightMax() {
-            sourceArr.forEach(function (el, i) {
-                sourceArr[i].forEach(function (item) {
-                    !isNaN(item) && sourceMax.push(item)
+        //绘制辨识格子
+        function drawRect() {
+            let isRect = [],
+                isrectG = document.createElementNS(svgNode, 'g')
+            sourceArr.forEach(function (el, i, arr) {
+                let isRectValue = isRect.some(function (item) {
+                    return item == el[1]
                 })
+                if (!isRectValue) {
+                    isRect.push(el[1])
+                }
             })
-            max = Math.max.apply(null, sourceMax)
-            svg.setAttribute('height', max + 50)
+            for (let j = 1; j < isRect.length; j++) {
+                let isrect = document.createElementNS(svgNode, 'rect'),
+                    isrectText = document.createElementNS(svgNode, 'text')
+                isrectText.innerHTML = isRect[j]
+                isrectText.setAttribute('x', j * 100 + 40 + 'px')
+                isrectText.setAttribute('y', '10px')
+                isrectText.setAttribute('style', 'fill:' + colors[j - 1] + ';font-size:12px;')
+                isrect.setAttribute('x', j * 100 + 'px')
+                isrect.setAttribute('y', '0px')
+                isrect.setAttribute('rx', '3px')
+                isrect.setAttribute('ry', '3px')
+                isrect.setAttribute('width', '30px')
+                isrect.setAttribute('height', '10px')
+                isrect.setAttribute('style', 'fill:' + colors[j - 1])
+                isrectG.appendChild(isrectText)
+                isrectG.appendChild(isrect)
+            }
+            svg.appendChild(isrectG)
+
         }
 
         //绘制轴线
@@ -314,7 +354,7 @@
         function drawChartRect() {
             let rectG = document.createElementNS(svgNode, 'g')
             rectG.setAttribute('class', 'late')
-            for (let i = 1; i < len; i++) {
+            for (let i = 1; i < sourceArr.length; i++) {
                 let count = sourceArr[i].length,
                     txt1 = sourceArr[i][0],
                     txtbefore1 = sourceArr[i - 1][0]
@@ -359,11 +399,12 @@
             //月份遮罩层
             mask.setAttribute('style', 'height:' + (max - 2) + 'px;left:' + (index * 116 + 25) + 'px;')
             //详细信息位置跟随
-            index > 5 ? dark.setAttribute('style', 'top:' + charty + 'px;left:' + (chartx - 150) + 'px;') : dark.setAttribute('style', 'top:' + charty + 'px;left:' + chartx + 'px;')
+            index > 5 ? dark.setAttribute('style', 'top:' + charty + 'px;left:' + (chartx - 150) + 'px;display:block;') : dark.setAttribute('style', 'top:' + charty + 'px;left:' + chartx + 'px;display:block;')
         } else {
             mask.style.display = 'none'
             dark.style.display = 'none'
         }
+        console.log(chartx, charty, x, y)
         //添加详细信息
         sourceArr.forEach(function (el, i) {
             let p = document.createElement('p'),
@@ -375,16 +416,75 @@
         })
     }
 
+    //绘画折线图
+    function drawLineChart() {
+        let cWidth = 50 * sourceArr[0].length,
+            x = 0,
+            y = 0,
+            h = max / 2 + 5
+        canvas.width = cWidth
+        //绘画轴线
+        sourceArr.forEach(function (el, i, arr) {
+            if (i === 0) {
+                //绘画横轴
+                el.forEach(function (item, j) {
+                    if (j > 1) {
+                        j > 2 ? y = h : y = 0
+                        x += 50
+                        ctx.moveTo(x + 0.5, y) //加0.5是为了让线条变为1px（因canvas有中线，1px的线会向两侧延伸，计算机默认渲染成2PX）
+                        ctx.lineTo(x + 0.5, h + 4)
+                        ctx.stroke()
+                        ctx.fillText(item, x - 10, h + 20) //添加月份
+                    }
+                })
+                //绘画纵线
+                let kNum = Math.ceil(max / 100) //得到绘画纵线的条数
+                y = 0
+                for (let k = 0; k < kNum; k++) {
+                    ctx.moveTo(46, h - y + 0.5)
+                    ctx.lineTo(cWidth, h - y + 0.5)
+                    ctx.stroke()
+                    ctx.fillText(k * 100, 26, h + 4 - y) //添加销量
+                    y += 50
+                }
+            } else { //绘画数据
+                x = 0
+                el.forEach(function (item, n) {
+                    if (!isNaN(item)) {
+                        x += 50
+                        //绘画圆点
+                        ctx.beginPath()
+                        ctx.arc(x + 0.5, h - item / 2, 3, 0, 2 * Math.PI)
+                        ctx.closePath()
+                        ctx.fillStyle = colors[i - 1]
+                        ctx.fill()
+                        //绘画线条
+                        ctx.beginPath()
+                        ctx.moveTo(x + 0.5, h - item / 2)
+                        ctx.lineTo(x + 50.5, h - el[n + 1] / 2)
+                        ctx.closePath()
+                        ctx.strokeStyle = colors[i - 1]
+                        ctx.stroke()
+                    }
+                })
+            }
+        })
+    }
+
     //初始化
     drawCheckBox()
     drawTable()
+    getSourceArr()
     drawChart()
+    drawLineChart()
     mergeCell()
 
     //添加事件
     radioWrapper.addEventListener('click', function () { // 因只需判断复选框有无勾选，所以不需绑定在input标签上
         drawTable()
+        getSourceArr()
         drawChart()
+        drawLineChart()
         mergeCell()
     })
     productRadioWrapper.addEventListener('click', function (e) {
@@ -397,6 +497,11 @@
     })
     warp.addEventListener('mousemove', function (e) {
         drawBgColor(e)
+    })
+    Table.addEventListener('mouseover', function (e) {
+        getSourceArr(e.target.parentNode)
+        drawChart()
+        drawLineChart()
     })
 
 }())

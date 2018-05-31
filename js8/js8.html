@@ -13,12 +13,16 @@
             box-sizing: border-box;
         }
 
+        .wrap {
+            min-height: 1300px;
+        }
+
         ul {
-            margin: 20px;
+            float: left;
+            margin: 0 20px;
         }
 
         li {
-            float: left;
             list-style: none;
             font-size: 20px;
             width: 100px;
@@ -27,14 +31,18 @@
         th,
         td {
             border: 1px solid #ddd;
-            width: 80px;
-            height: 32px;
+            width: 60px;
+            height: 26px;
+        }
+
+        tr:hover {
+            background-color: #eee;
+            color: lightcoral;
         }
 
         #table-wrapper {
-            clear: both;
+            float: right;
             font-size: 14px;
-            margin-left: 20px;
         }
 
         .chart {
@@ -50,6 +58,7 @@
 
         .dark {
             position: absolute;
+            display: none;
             background-color: #000;
             opacity: 0.7;
             border-radius: 5px;
@@ -92,19 +101,19 @@
             <ul id="product-radio-wrapper"></ul>
             <ul id="region-radio-wrapper"></ul>
         </div>
-        <div class="chart">
-            <div class="mask"></div>
-            <svg id="svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
-            </svg>
-            <div class="dark"></div>
-        </div>
         <div id="table-wrapper">
-            <p>只要按照格式添加sourceData数据，就可一直渲染增加数据</p>
             <form action="">
                 <table cellspacing='0'>
                     <tbody id="table"></tbody>
                 </table>
             </form>
+        </div>
+        <div class="chart">
+            <div class="mask"></div>
+            <svg id="svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
+            </svg>
+            <div class="dark"></div>
+            <canvas id="canvas"></canvas>
         </div>
     </div>
 
