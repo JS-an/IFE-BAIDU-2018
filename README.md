@@ -1,3 +1,4 @@
+<div>
 IFE-BAIDU-2018
 报完名电脑就Boom了，下午紧赶慢赶终于组装了一部老旧电脑，求不Boom，只要保佑陪我度过这个课程就好了！
 <hr>
@@ -23,7 +24,6 @@ https://js-an.github.io/IFE-BAIDU-2018/sliderAnima/slider.html
 <hr>
 animation
 https://js-an.github.io/IFE-BAIDU-2018/animation/animation.html
-
 <hr>
 零基础学院
 <hr>
@@ -62,3 +62,4 @@ https://js-an.github.io/IFE-BAIDU-2018/js7/js7.html
 <hr>
 js8 
 https://js-an.github.io/IFE-BAIDU-2018/js8/js8.html
+</div>
