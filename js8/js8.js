@@ -234,7 +234,7 @@
             let tdCount = allTr.childElementCount
             sourceArr.push(tableTop)
             sourceArr.push([])
-            tdCount !== 14 && sourceArr[1].push('')
+            tdCount !== 14 && sourceArr[1].push('商品/地区')
             for (let i = 0; i < tdCount; i++) {
                 sourceArr[1].push(allTr.children[i].innerHTML)
             }
@@ -404,7 +404,6 @@
             mask.style.display = 'none'
             dark.style.display = 'none'
         }
-        console.log(chartx, charty, x, y)
         //添加详细信息
         sourceArr.forEach(function (el, i) {
             let p = document.createElement('p'),
