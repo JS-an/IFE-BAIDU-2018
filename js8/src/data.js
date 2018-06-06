@@ -6,7 +6,6 @@ function getSourceArr(t) {
         let tdCount = allTr.childElementCount
         sourceArr.push(tableTop)
         sourceArr.push([])
-        tdCount !== 14 && sourceArr[1].push('商品/地区')
         for (let i = 0; i < tdCount; i++) {
             sourceArr[1].push(allTr.children[i].innerHTML)
         }
@@ -26,7 +25,8 @@ function heightMax() {
     let sourceMax = []
     sourceArr.forEach(function (el, i) {
         el.forEach(function (item) {
-            !isNaN(item) && sourceMax.push(item)
+            let Item = parseInt(item);
+            !isNaN(Item) && sourceMax.push(Item)
         })
     })
     max = Math.max.apply(null, sourceMax)

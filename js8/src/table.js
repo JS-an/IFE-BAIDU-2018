@@ -70,8 +70,11 @@ function drawTable() {
         //渲染销量
         el.sale.forEach(function (num) {
             let checkBoxTd = document.createElement('td'),
-                checkBoxContent = document.createTextNode(num)
+                checkBoxContent = document.createTextNode(num),
+                checkBoxEdit = document.createElement('span')
+            checkBoxEdit.innerHTML = '编辑'
             checkBoxTd.appendChild(checkBoxContent)
+            checkBoxTd.appendChild(checkBoxEdit)
             checkBoxTr.appendChild(checkBoxTd)
         })
         //插入表格
@@ -85,7 +88,7 @@ function mergeCell() {
         rows = 1,
         len = allTr.length
     for (let i = 2; i <= len; i++) {
-        if (i == allTr.length) {
+        if (i == len) {
             allTr[i - rows].firstChild.setAttribute('rowspan', rows)
             rows = 1
         } else if (allTr[i].firstChild.innerHTML == allTr[i - 1].firstChild.innerHTML) {
@@ -97,7 +100,7 @@ function mergeCell() {
     }
     for (let i = 1; i < len; i++) {
         if (!allTr[i].children[0].getAttribute('rowspan')) {
-            allTr[i].removeChild(allTr[i].children[0])
+            allTr[i].children[0].style.display = 'none'
         }
     }
 }

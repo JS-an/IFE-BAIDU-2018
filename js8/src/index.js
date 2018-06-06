@@ -16,6 +16,10 @@ import {
     getSourceArr,
     heightMax
 } from './data'
+import {
+    editData
+} from './editdata'
+
 (function () {
     //初始化
     drawCheckBox()
@@ -48,5 +52,8 @@ import {
         getSourceArr(e.target.parentNode)
         drawChart()
         drawLineChart()
+    })
+    Table.addEventListener('dblclick', function (e) {
+        editData(e)
     })
 }())

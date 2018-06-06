@@ -30,14 +30,40 @@
 
         th,
         td {
+            position: relative;
             border: 1px solid #ddd;
-            width: 60px;
-            height: 26px;
+            width: 80px;
+            height: 25px;
+        }
+
+        span {
+            display: none;
+            position: absolute;
+            right: 0;
+            font-size: 10px;
+            color: darkgreen;
+            z-index: -1;
+        }
+
+        .edit-text {
+            position: absolute;
+            width: 60%;
+            left: 0;
+        }
+
+        .confirm,
+        .close {
+            float: right;
+            width: 20%
         }
 
         tr:hover {
-            background-color: #eee;
+            background-color: rgb(0, 0, 0, 0.1);
             color: lightcoral;
+        }
+
+        td:hover span {
+            display: inline-block;
         }
 
         #table-wrapper {

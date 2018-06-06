@@ -146,9 +146,11 @@ function drawBgColor(e) {
     //添加详细信息
     sourceArr.forEach(function (el, i) {
         let p = document.createElement('p'),
-            content
-        i === 0 ? content = '' : content = el[0] + '-' + el[1] + '：'
-        let ptxt = document.createTextNode(content + el[index + 2])
+            content,
+            ptxt,
+            txt
+        i === 0 ? (content = '', txt = el[index + 2]) : (content = el[0] + '-' + el[1] + '：', txt = parseInt(el[index + 2]))
+        ptxt = document.createTextNode(content + txt)
         p.appendChild(ptxt)
         dark.appendChild(p)
     })
@@ -188,18 +190,19 @@ function drawLineChart() {
         } else { //绘画数据
             x = 0
             el.forEach(function (item, n) {
-                if (!isNaN(item)) {
+                let Item = parseInt(item)
+                if (!isNaN(Item)) {
                     x += 50
                     //绘画圆点
                     ctx.beginPath()
-                    ctx.arc(x + 0.5, h - item / 2, 3, 0, 2 * Math.PI)
+                    ctx.arc(x + 0.5, h - Item / 2, 3, 0, 2 * Math.PI)
                     ctx.closePath()
                     ctx.fillStyle = colors[i - 1]
                     ctx.fill()
                     //绘画线条
                     ctx.beginPath()
-                    ctx.moveTo(x + 0.5, h - item / 2)
-                    ctx.lineTo(x + 50.5, h - el[n + 1] / 2)
+                    ctx.moveTo(x + 0.5, h - Item / 2)
+                    ctx.lineTo(x + 50.5, h - parseInt(el[n + 1]) / 2)
                     ctx.closePath()
                     ctx.strokeStyle = colors[i - 1]
                     ctx.stroke()
