@@ -62,7 +62,7 @@ https://js-an.github.io/IFE-BAIDU-2018/js7/js7.html
 <hr>
 js8 
 https://js-an.github.io/IFE-BAIDU-2018/js8/js8.html
-</div>
+<hr>
 js9 
 https://js-an.github.io/IFE-BAIDU-2018/js9/js9.html
 </div>
